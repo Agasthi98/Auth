@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./CSS/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <!-- <img id="img" src="./image.png"> -->
 
-   <div class="imageContainer">
-    <video id="video" width="320" height="240" autoplay></video>
-    <canvas id="canvas" width="320" height="240"></canvas>
-   </div>
-    
    <div>
-    <input id="userID" type="text">
-    <button id="start-camera">Start Camera</button>
-    <button id="click-photo">Click Photo</button>
-   </div>
-    
-   <div style="margin-top: 20px;">
-       <textarea name="base64" id="imgData" cols="100" rows="30"></textarea>
+    <label for="uid">User ID:</label><br>
+    <input type="number" id="uid" name="uid"><br>
+
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname"><br><br>
+
+    <input type="button" id="submit" value="Submit">
    </div>
 
     
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="./register.js"></script>
-    <script src="./app.js"></script>
-
+    <script src="./JS/register.js"></script>
 </html>

@@ -6,31 +6,31 @@ require_once './dbconfig.php';
     {
         $userID = $_GET['userID'];
 
-        // print($imgData);
+        $sqlID = "SELECT id FROM users WHERE uid = $userID";
+        $result = $con->query($sqlID);
 
-        // $sql = `INSERT INTO capture (id, uid, img_data)
-        // VALUES ('',$userID, $imgData)`;
-
-        // $sql = `INSERT INTO capture (id, uid, img_data)
-        // VALUES ('0','12', 'asdf123')`;
-
-        $sql = "SELECT img_data FROM capture WHERE id = $userID";
-        $result = $con->query($sql);
-
-        // if ($con->query($sql) === TRUE) {
-        // echo "New record created successfully";
-        // } else {
-        // echo "Error: " . $sql . "<br>" . $con->error;
-        // }
 
         if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-              echo "id: " . $row["id"]. " - uid: " . $row["uid"]. " " . $row["img_data"]. "<br>";
+          $row = $result->fetch_assoc();
+          $id = $row["id"];
+          echo "ID : " .$id. "<br>";
+
+          $sqlImg = "SELECT image_data FROM face_data WHERE u_id = $id";
+          $result = mysqli_query($con, $sqlImg);
+          echo "Number of records : " .mysqli_num_rows($result)."<br><br>";
+          if (mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_assoc($result)) {
+              echo '<textarea rows="20" cols="180">' .  $row["image_data"] . '</textarea><br><br>';
             }
           } else {
             echo "0 results";
           }
-    };
 
+
+          }
+          else{
+            echo "0 results";
+          }
+    };
+  $con -> close()
 ?>
